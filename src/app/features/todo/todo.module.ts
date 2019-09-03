@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { TodoComponent } from './todo.component';
 import { EntryComponent } from './components/entry/entry.component';
 import { ListComponent } from './components/list/list.component';
+import { ListDataService } from './services/list-data.service';
 
 
 
@@ -11,6 +12,7 @@ import { ListComponent } from './components/list/list.component';
   imports: [
     CommonModule
   ],
-  exports: [TodoComponent]
+  exports: [TodoComponent],
+  providers: [ListDataService]
 })
 export class TodoModule { }

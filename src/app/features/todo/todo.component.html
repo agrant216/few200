@@ -2,4 +2,4 @@
   <h3>Your Todo List</h3>
 </header>
 <app-entry (itemAdded)="addTodoItem($event)"></app-entry>
-<app-list [items]="todoList"></app-list>
+<app-list [items]="todoList$ | async"></app-list>
