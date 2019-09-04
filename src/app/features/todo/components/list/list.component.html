@@ -6,7 +6,7 @@
   <li class="alert"
       [ngClass]="{ 'alert-info': !item.completed, 'alert-success':item.completed}"
       *ngFor="let item of items">
-    <span [ngClass]="{'done':item.completed}"> {{ item.description }}</span>
+    <span [ngClass]="{'done':item.completed}">{{item.description }}&nbsp;</span>
     <input type="button"
            *ngIf="!item.completed"
            (click)="markComplete(item)"
