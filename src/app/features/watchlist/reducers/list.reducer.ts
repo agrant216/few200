@@ -14,23 +14,15 @@ export interface ListState extends EntityState<ListEntity> {
 export const adapter = createEntityAdapter<ListEntity>();
 
 // const initialState = adapter.getInitialState();
-const initialState: ListState = {
-  ids: ['1', '2'],
-  entities: {
-    1: {
-      id: '1',
-      title: 'Joker'
-    },
-    2: {
-      id: '2',
-      title: 'Game of Thrones'
-    }
-  }
-};
-
+const initialState: ListState = adapter.getInitialState();
 const reducerFunction = createReducer(
   initialState,
-  on(actions.showAdded, (s, a) => adapter.addOne(a.entity, s))
+  on(actions.showAdded, (s, a) => adapter.addOne(a.entity, s)),
+  on(actions.showsLoaded, (s, a) => adapter.addAll(a.shows, s)),
+  on(actions.showAddedSuccess, (s, a) => {
+    const tempState = adapter.removeOne(a.oldid, s);
+    return adapter.addOne(a.newEntity, tempState);
+  })
 );
 
 export function reducer(state: ListState = initialState, action: Action) {
