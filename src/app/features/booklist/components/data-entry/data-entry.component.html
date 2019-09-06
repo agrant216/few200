@@ -1,0 +1,21 @@
+<div class="form-group">
+    <input name="title"
+           class='form-control'
+           placeholder="Title"
+           #title>
+    <input name="author"
+           class="form-control"
+           placeholder="Author"
+           #author>
+    <div class="dropdown">
+            <select class="custom-select" name="bookTypes">
+                <option selected>Book Format...</option>
+                <option *ngFor="let opt of options">{{opt}}</option>
+            </select>
+          </div>
+    <input type="button"
+           class="btn btn-primary"
+           value="Add"
+           (click)="add(show)">
+  
+  </div>
